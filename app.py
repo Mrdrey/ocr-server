@@ -6,7 +6,7 @@ from werkzeug.utils import secure_filename
 import io
 from PIL import Image
 import logging
-from os import environ
+
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
@@ -107,6 +107,5 @@ def extract_text_from_image(image_path):
         raise
 
 if __name__ == "__main__":
-    from os import environ
-    port = int(environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
